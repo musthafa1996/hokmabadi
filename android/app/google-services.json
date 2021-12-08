@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "331999122040",
+    "project_id": "dr-h-and-co",
+    "storage_bucket": "dr-h-and-co.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:331999122040:android:4c4dcbd0ae16ee4e6f138d",
+        "android_client_info": {
+          "package_name": "com.holistic_dental_formulas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "331999122040-9hdcmtvg61une49bt60enj8d8kk2ldkl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.holistic_dental_formulas",
+            "certificate_hash": "e066d6dd89ce051c45f177bf50608643cd5ac714"
+          }
+        },
+        {
+          "client_id": "331999122040-ioalqeemqfe30v0ckibkk67c7dn90a1s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC6kaDYJJyVEZPnn0CtDRily87Zg5apqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "331999122040-ioalqeemqfe30v0ckibkk67c7dn90a1s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "331999122040-rghdlp0khanua4oe39abov92b8aat349.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.holisticdentalformulas.app",
+                "app_store_id": "1588832613"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
