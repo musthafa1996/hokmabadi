@@ -5,6 +5,6 @@ class AppConfig {
 
   static const agoraAppId = "c94878277a8447f7a914730d55170619";
 
-  static const authUsername = "admin@drhco";
+  static const authUsername = "admin";
   static const authPassword = r"redbottlecarmoose";
 }
