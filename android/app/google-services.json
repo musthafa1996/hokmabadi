@@ -1,49 +1,48 @@
 {
   "project_info": {
-    "project_number": "331999122040",
-    "project_id": "dr-h-and-co",
-    "storage_bucket": "dr-h-and-co.appspot.com"
+    "project_number": "319920071303",
+    "project_id": "dr-h-and-co-crm",
+    "storage_bucket": "dr-h-and-co-crm.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:331999122040:android:4c4dcbd0ae16ee4e6f138d",
+        "mobilesdk_app_id": "1:319920071303:android:b922b6792957b728ed4e22",
         "android_client_info": {
-          "package_name": "com.holistic_dental_formulas"
+          "package_name": "com.holisticdentalformulas.admin"
         }
       },
       "oauth_client": [
         {
-          "client_id": "331999122040-9hdcmtvg61une49bt60enj8d8kk2ldkl.apps.googleusercontent.com",
+          "client_id": "319920071303-fg75lgs9rt3vaurfuulvin04fl0etplb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.holistic_dental_formulas",
+            "package_name": "com.holisticdentalformulas.admin",
             "certificate_hash": "e066d6dd89ce051c45f177bf50608643cd5ac714"
           }
         },
         {
-          "client_id": "331999122040-ioalqeemqfe30v0ckibkk67c7dn90a1s.apps.googleusercontent.com",
+          "client_id": "319920071303-3kgkb13qjiu7b68ag4h7vfvn0h9o5954.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAC6kaDYJJyVEZPnn0CtDRily87Zg5apqw"
+          "current_key": "AIzaSyDvPqt0lbe25ZX-Rz8vRdpxIjxtCcX_U14"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "331999122040-ioalqeemqfe30v0ckibkk67c7dn90a1s.apps.googleusercontent.com",
+              "client_id": "319920071303-3kgkb13qjiu7b68ag4h7vfvn0h9o5954.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "331999122040-rghdlp0khanua4oe39abov92b8aat349.apps.googleusercontent.com",
+              "client_id": "319920071303-fnq4j7g15qhhg6rng0nkot5s54dcmeo3.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.holisticdentalformulas.app",
-                "app_store_id": "1588832613"
+                "bundle_id": "com.holisticdentalformulas.admin.hokmabadi"
               }
             }
           ]

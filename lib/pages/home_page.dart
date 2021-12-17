@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
                 margin: const EdgeInsets.only(top: 20),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 22,
-                  vertical: 30,
+                  vertical: 45,
                 ),
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.surface,
@@ -52,10 +52,13 @@ class HomePage extends StatelessWidget {
                       children: [
                         const IgnorePointer(
                           ignoring: true,
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: "Enter patient's information",
-                              suffixIcon: Icon(Icons.search, size: 20),
+                          child: Hero(
+                            tag: "search",
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: "Search a patient",
+                                suffixIcon: Icon(Icons.search, size: 20),
+                              ),
                             ),
                           ),
                         ),

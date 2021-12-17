@@ -22,30 +22,26 @@ class _PatientSearchState extends State<PatientSearchPage> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
-            // title: const Text("Search for patient"),
-            ),
+          title: const Text("Search for patient"),
+        ),
         backgroundColor: Colors.white,
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: Container(
           width: double.maxFinite,
-          padding: const EdgeInsets.symmetric(horizontal: 22),
+          padding: const EdgeInsets.fromLTRB(22, 0, 22, 15),
           child: ElevatedButton(
             onPressed: _search,
             child: const Text("Search"),
           ),
         ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(20, 10, 20, 76),
+          padding: const EdgeInsets.fromLTRB(20, 10, 20, 71),
           child: SafeArea(
             child: Form(
               key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "Search a patient",
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
                   const SizedBox(height: 15),
                   const Text(
                     "Please enter at least one of the first name or the last name of a patient to search.",
