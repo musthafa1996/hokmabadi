@@ -21,65 +21,71 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(22, 0, 22, 22),
         child: SafeArea(
-          child: Column(
-            children: [
-              Image.asset("assets/images/welcome.png"),
-              Container(
-                margin: const EdgeInsets.only(top: 20),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 22,
-                  vertical: 45,
-                ),
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.surface,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Welcome to Dr. H. & Co.",
-                      style: Theme.of(context).textTheme.headline5,
-                      textAlign: TextAlign.center,
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 450),
+              child: Column(
+                children: [
+                  Image.asset("assets/images/welcome.png"),
+                  Container(
+                    margin: const EdgeInsets.only(top: 20),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 22,
+                      vertical: 45,
                     ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      "Search for a patient below to continue",
-                      textAlign: TextAlign.center,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.surface,
+                      borderRadius: BorderRadius.circular(15),
                     ),
-                    const SizedBox(height: 30),
-                    Stack(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const IgnorePointer(
-                          ignoring: true,
-                          child: Hero(
-                            tag: "search",
-                            child: TextField(
-                              decoration: InputDecoration(
-                                hintText: "Search a patient",
-                                suffixIcon: Icon(Icons.search, size: 20),
+                        Text(
+                          "Welcome to Dr. H. & Co.",
+                          style: Theme.of(context).textTheme.headline5,
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 10),
+                        const Text(
+                          "Search for a patient below to continue",
+                          textAlign: TextAlign.center,
+                        ),
+                        const SizedBox(height: 30),
+                        Stack(
+                          children: [
+                            const IgnorePointer(
+                              ignoring: true,
+                              child: Hero(
+                                tag: "search",
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    hintText: "Search a patient",
+                                    suffixIcon: Icon(Icons.search, size: 20),
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
-                        Positioned.fill(
-                          child: Material(
-                            color: Colors.transparent,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                            Positioned.fill(
+                              child: Material(
+                                color: Colors.transparent,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                child: InkWell(
+                                  onTap: () => _searchPatient(context),
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
                             ),
-                            child: InkWell(
-                              onTap: () => _searchPatient(context),
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                          ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),

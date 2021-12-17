@@ -24,43 +24,53 @@ class _PatientSearchState extends State<PatientSearchPage> {
         appBar: AppBar(
           title: const Text("Search for patient"),
         ),
-        backgroundColor: Colors.white,
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Container(
-          width: double.maxFinite,
-          padding: const EdgeInsets.fromLTRB(22, 0, 22, 15),
-          child: ElevatedButton(
-            onPressed: _search,
-            child: const Text("Search"),
-          ),
-        ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(20, 10, 20, 71),
+          padding: const EdgeInsets.fromLTRB(20, 20, 20, 71),
           child: SafeArea(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 15),
-                  const Text(
-                    "Please enter at least one of the first name or the last name of a patient to search.",
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 450),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 15),
+                      const Text(
+                        "Please enter at least one of the first name or the last name of a patient to search.",
+                      ),
+                      const SizedBox(height: 35),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          hintText: "First name",
+                          fillColor: Theme.of(context).colorScheme.background,
+                        ),
+                        onSaved: (value) {
+                          _firstName = value;
+                        },
+                      ),
+                      const SizedBox(height: 20),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          hintText: "Last name",
+                          fillColor: Theme.of(context).colorScheme.background,
+                        ),
+                        onSaved: (value) {
+                          _lastName = value;
+                        },
+                      ),
+                      const SizedBox(height: 40),
+                      SizedBox(
+                        width: double.maxFinite,
+                        child: ElevatedButton(
+                          onPressed: _search,
+                          child: const Text("Search"),
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 35),
-                  TextFormField(
-                    decoration: const InputDecoration(hintText: "First name"),
-                    onSaved: (value) {
-                      _firstName = value;
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  TextFormField(
-                    decoration: const InputDecoration(hintText: "Last name"),
-                    onSaved: (value) {
-                      _lastName = value;
-                    },
-                  )
-                ],
+                ),
               ),
             ),
           ),

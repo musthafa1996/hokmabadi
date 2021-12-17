@@ -176,44 +176,50 @@ class _PatientSearchState extends State<PatientResultsPage> {
       padding: EdgeInsets.only(top: 10, bottom: bottomPadding + 30),
       itemBuilder: (context, index) {
         final patient = patients[index];
-        return ListTile(
-            onTap: () {
-              Modular.to.pushNamed("/virtual-appointment/${patient.id}",
-                  arguments: patient);
-            },
-            contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
-            // isThreeLine: true,
-            leading: CircleAvatar(
-              radius: 24,
-              backgroundColor: Theme.of(context).colorScheme.primary,
-              // child: Icon(Icons.person,
-              //     color: Theme.of(context).colorScheme.background),
-              child: Text(patient.firstName[0]),
-            ),
-            title: Text(
-              "${patient.firstName} ${patient.lastName}",
-            ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 3),
-                Text(
-                  patient.emailAddress ?? "--",
-                  style: const TextStyle(
-                    fontSize: 12,
-                  ),
+        return Align(
+          alignment: Alignment.topCenter,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 550),
+            child: ListTile(
+                onTap: () {
+                  Modular.to.pushNamed("/virtual-appointment/${patient.id}",
+                      arguments: patient);
+                },
+                contentPadding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                // isThreeLine: true,
+                leading: CircleAvatar(
+                  radius: 24,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  // child: Icon(Icons.person,
+                  //     color: Theme.of(context).colorScheme.background),
+                  child: Text(patient.firstName[0]),
                 ),
-                const SizedBox(height: 3),
-                Text(
-                  patient.phones?.isEmpty ?? true
-                      ? "--"
-                      : patient.phones!.first.number,
-                  style: const TextStyle(
-                    fontSize: 12,
-                  ),
+                title: Text(
+                  "${patient.firstName} ${patient.lastName}",
                 ),
-              ],
-            ));
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 3),
+                    Text(
+                      patient.emailAddress ?? "--",
+                      style: const TextStyle(
+                        fontSize: 12,
+                      ),
+                    ),
+                    const SizedBox(height: 3),
+                    Text(
+                      patient.phones?.isEmpty ?? true
+                          ? "--"
+                          : patient.phones!.first.number,
+                      style: const TextStyle(
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                )),
+          ),
+        );
       },
       itemCount: patients.length,
     );

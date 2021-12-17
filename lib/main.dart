@@ -21,14 +21,18 @@ void main() async {
 
     tz.initializeTimeZones();
 
-    await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+    if (!kIsWeb) {
+      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+      FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+    }
 
     runApp(ModularApp(
       module: AppModule(),
       child: const App(),
     ));
   }, (error, stackTrace) {
-    FirebaseCrashlytics.instance.recordError(error, stackTrace);
+    if (!kIsWeb) {
+      FirebaseCrashlytics.instance.recordError(error, stackTrace);
+    }
   });
 }

@@ -104,19 +104,18 @@ class App extends StatelessWidget {
         ),
       ),
       builder: (context, child) {
-        child = AppInit(
-          child: child ?? const SizedBox(),
-        );
-
         return ResponsiveWrapper.builder(
-          child,
-          maxWidth: 1200,
-          minWidth: 480,
-          defaultScale: true,
+          AppInit(child: child ?? const SizedBox()),
+          defaultName: PHONE,
+          minWidth: 1,
+          defaultScale: false,
           breakpoints: [
-            const ResponsiveBreakpoint.resize(480, name: MOBILE),
-            const ResponsiveBreakpoint.autoScale(800, name: TABLET),
-            const ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+            const ResponsiveBreakpoint.resize(576, name: MOBILE),
+            const ResponsiveBreakpoint.resize(768, name: TABLET),
+            const ResponsiveBreakpoint.resize(992, name: TABLET),
+            const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
+            const ResponsiveBreakpoint.autoScale(1920,
+                name: "4K", scaleFactor: 1),
           ],
           background: Container(
             color: Colors.white,
