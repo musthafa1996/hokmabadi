@@ -54,7 +54,7 @@ class PatientRepository {
   }
 
   Future<Patient> retrieve(String id) async {
-    final token = await authController.token;
+    final token = authController.token;
 
     final url =
         Uri.parse("$kAscendApiEndpoint/ascend-gateway/api/v1/patients/$id");

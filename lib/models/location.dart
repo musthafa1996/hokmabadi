@@ -3,6 +3,7 @@ import 'package:hokmabadi/models/ascend_ref_object.dart';
 class Location {
   Location({
     required this.id,
+    required this.uid,
     required this.name,
     required this.abbreviation,
     required this.taxPercentage,
@@ -21,7 +22,8 @@ class Location {
     this.lastModified,
   });
 
-  final String id;
+  final int id;
+  final String uid;
   final String name;
   final String? abbreviation;
   final num taxPercentage;
@@ -42,6 +44,7 @@ class Location {
   factory Location.fromJson(Map<String, dynamic> json) {
     return Location(
       id: json["id"],
+      uid: json["uid"],
       name: json["name"],
       abbreviation: json["abbreviation"] ?? "",
       taxPercentage: json["taxPercentage"],

@@ -12,7 +12,7 @@ class AgoraRepository {
   final AuthController authController;
 
   Future<AgoraToken> generateToken({
-    required String appointmentId,
+    required int appointmentId,
     required String channel,
     required String location,
     required int patientId,

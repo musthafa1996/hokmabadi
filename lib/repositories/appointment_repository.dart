@@ -15,18 +15,16 @@ class AppointmentRepository {
     final token = await authController.token;
     final now = DateTime.now();
 
-    final url =
-        Uri.parse("$kAscendApiEndpoint/ascend-gateway/api/v1/appointments")
-            .replace(queryParameters: {
-      "filter":
-          "patient.id==$patientId,status!=BROKEN,start>=${now.toIso8601String()}"
-    });
+    final url = Uri.parse("$kStagingUrl/admin/patients/$patientId/appointments")
+            .replace(
+        queryParameters: {"moment": "upcoming"});
+
     final headers = {
       'Content-type': 'application/json',
       'Accept': 'application/json',
-      'Authorization': 'Bearer ${token}',
-      'Organization-ID': AppConfig.ascendOrganizationId,
+      'Authorization': 'Bearer $token',
     };
+
     final response = await http.get(url, headers: headers);
 
     if (response.statusCode == 200) {

@@ -11,5 +11,5 @@ class VirtualAppointmentParams {
   final String channel;
   final ClientRole role;
   final String token;
-  final String appointmentId;
+  final int appointmentId;
 }

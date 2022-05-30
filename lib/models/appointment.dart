@@ -27,11 +27,12 @@ class Appointment {
     required this.provider,
     this.otherProvider,
     this.location,
+    required this.locationUid,
     required this.patient,
     required this.operatory,
   });
 
-  final String id;
+  final int id;
   final DateTime start;
   final DateTime? end;
   final DateTime? created;
@@ -51,6 +52,7 @@ class Appointment {
   final String? labCaseStatus;
   final DateTime? labCaseDueDate;
   final String? labCaseNote;
+  final String locationUid;
   final List? patientProcedures;
   final List? visits;
   final AscendRefObject provider;
@@ -74,6 +76,7 @@ class Appointment {
       needsPremedicate: json['needsPremedicate'] == true,
       status: json['status'],
       note: json['note'],
+      locationUid: json['location_uid'],
       other: json['other'],
       bookedOnline: json['bookedOnline'] == true,
       leftMessage: json['leftMessage'] == null

@@ -12,10 +12,10 @@ class LocationRepository {
   final AuthController authController;
 
   Future<Location> retrieve(String id) async {
-    final token = await authController.token;
+    final token = authController.token;
 
     final url =
-        Uri.parse("$kAscendApiEndpoint/ascend-gateway/api/v1/locations/$id");
+        Uri.parse("$kStagingUrl/admin/locations");
     final headers = {
       'Content-type': 'application/json',
       'Accept': 'application/json',
@@ -26,9 +26,14 @@ class LocationRepository {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      final location =
-          Location.fromJson(Map<String, dynamic>.from(data['data']));
-      return location;
+      final List<Location> locations = (data['data'] as List)
+          .map((e) => Location.fromJson(Map<String, dynamic>.from(e)))
+          .toList();
+
+      return locations.firstWhere(
+              (location) => location.uid == id
+      );
+
     }
 
     throw Exception("An error occurred.");
