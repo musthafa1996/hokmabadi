@@ -1,28 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hokmabadi/config/app_config.dart';
+import 'package:hokmabadi/models/authenticated_response.dart';
 import 'package:hokmabadi/models/token.dart';
+import 'package:hokmabadi/repositories/auth_repository.dart';
 import 'package:hokmabadi/repositories/token_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../utils/http_client.dart';
+import 'dart:convert';
+
+import '../config/constants.dart';
+
+
+
 
 class AuthController extends ChangeNotifier {
-  AuthController({required this.tokenService});
+  AuthController({required this.authRepository});
 
-  final TokenService tokenService;
+  final AuthRepository authRepository;
 
-  Token? _token;
+
+  String? _token;
   bool _isLoggedIn = false;
 
-  bool get isLoggedIn => _isLoggedIn;
+  bool get isLoggedIn => _token != null;
 
-  Future<Token> get token async {
-    if (!_isLoggedIn) throw AuthException("Unauthenticated.");
-
-    // if (_token == null || _token!.expiresIn == 0) {
-    _token = await tokenService.generateToken();
-    // }
-
+  String get token {
+    if (!isLoggedIn) throw AuthException("Unauthenticated.");
     return _token!;
   }
+
 
   Future<void> checkIfPreviouslySignedIn() async {
     final prefs = await SharedPreferences.getInstance();
@@ -30,16 +37,16 @@ class AuthController extends ChangeNotifier {
   }
 
   Future<void> login(String username, String password) async {
-    if (!(username == AppConfig.authUsername &&
-        password == AppConfig.authPassword)) {
-      throw AuthException("Invalid username or password provided.");
-    }
+
+    final AuthenticatedResponse authResponse = await Modular.get<AuthRepository>().signIn(username, password);
 
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString("authUsername", username);
-
+    await prefs.setString("authToken", authResponse.token);
+    _token = authResponse.token;
     _isLoggedIn = true;
+
   }
+
 
   Future<void> signOut() async {
     final prefs = await SharedPreferences.getInstance();

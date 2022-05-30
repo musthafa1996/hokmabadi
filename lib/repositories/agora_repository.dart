@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:hokmabadi/config/constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:hokmabadi/controllers/auth_controller.dart';
@@ -20,16 +21,27 @@ class AgoraRepository {
     required String? note,
     required DateTime start,
   }) async {
-    final body = <String, dynamic>{
-      "appointment_id": appointmentId,
-      "channel_name": channel,
-      "location": location,
-      "name": patientName,
-      "patient_id": patientId,
-      "role": 'host',
-      "start": start.toIso8601String(),
-      "uid": "0",
+
+    final token = authController.token;
+
+
+    final headers = {
+      'Content-type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token',
     };
+
+
+    final body = <String, dynamic>{
+      "appointment_id": "1",
+      "channel_name": "Appointment for 1",
+      "location": "THDC Office 2",
+      "name": "John Doe",
+      "patient_id": "360480",
+      "role": 'host',
+      "uid": "510",
+    };
+
 
     if (note?.isNotEmpty ?? false) {
       note = note!.replaceAll(RegExp(r"[\n]+"), "");
@@ -38,7 +50,10 @@ class AgoraRepository {
     }
 
     final response =
-        await http.post(Uri.parse("$kVirtualApiEndpoint/token"), body: body);
+        await http.post(Uri.parse("$kStagingUrl/agora/token"), body: jsonEncode(body) , headers: headers);
+
+
+    debugPrint(response.body);
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);

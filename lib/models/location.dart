@@ -23,10 +23,10 @@ class Location {
 
   final String id;
   final String name;
-  final String abbreviation;
+  final String? abbreviation;
   final num taxPercentage;
   final String timeZone;
-  final String website;
+  final String? website;
   final String email;
   final String phone;
   final String address1;
@@ -35,7 +35,7 @@ class Location {
   final String state;
   final String postalCode;
   final AscendRefObject? image;
-  final AscendRefObject provider;
+  final AscendRefObject? provider;
   final AscendRefObject feeSchedule;
   final DateTime? lastModified;
 
@@ -43,7 +43,7 @@ class Location {
     return Location(
       id: json["id"],
       name: json["name"],
-      abbreviation: json["abbreviation"],
+      abbreviation: json["abbreviation"] ?? "",
       taxPercentage: json["taxPercentage"],
       timeZone: json["timeZone"],
       website: json["website"],
@@ -57,8 +57,8 @@ class Location {
       image: json["image"] == null
           ? null
           : AscendRefObject.fromJson(Map<String, dynamic>.from(json["image"])),
-      provider:
-          AscendRefObject.fromJson(Map<String, dynamic>.from(json["provider"])),
+      provider: json["provider"] == null
+          ? null : AscendRefObject.fromJson(Map<String, dynamic>.from(json["provider"])),
       feeSchedule: AscendRefObject.fromJson(
           Map<String, dynamic>.from(json["feeSchedule"])),
       lastModified: json["lastModified"] == null

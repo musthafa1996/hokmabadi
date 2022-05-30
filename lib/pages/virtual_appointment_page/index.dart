@@ -301,8 +301,7 @@ class _VirtualAppointmentPageState extends State<VirtualAppointmentPage> {
 
     Appointment appointment;
     try {
-      final appointments = await Modular.get<AppointmentRepository>()
-          .retrieveUpcoming(widget.patientId);
+      final appointments = await Modular.get<AppointmentRepository>().retrieveUpcoming(widget.patientId);
       if (appointments.isEmpty) return null;
       appointment = appointments.first;
     } catch (error) {
@@ -314,8 +313,7 @@ class _VirtualAppointmentPageState extends State<VirtualAppointmentPage> {
       if (appointment.location?.id == null) {
         throw Exception("Location not assigned to appointment.");
       }
-      location = await Modular.get<LocationRepository>()
-          .retrieve(appointment.location!.id);
+      location = await Modular.get<LocationRepository>().retrieve(appointment.location!.id);
     } catch (error) {
       throw "Something went wrong while identifying appointment location.";
     }

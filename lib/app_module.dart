@@ -9,17 +9,20 @@ import 'package:hokmabadi/pages/login_page.dart';
 import 'package:hokmabadi/pages/virtual_appointment_page/index.dart';
 import 'package:hokmabadi/repositories/agora_repository.dart';
 import 'package:hokmabadi/repositories/appointment_repository.dart';
+import 'package:hokmabadi/repositories/auth_repository.dart';
 import 'package:hokmabadi/repositories/location_repository.dart';
 import 'package:hokmabadi/repositories/patient_repository.dart';
 import 'package:hokmabadi/repositories/token_repository.dart';
+import 'package:hokmabadi/utils/http_client.dart';
 
 import 'models/patient.dart';
 
 class AppModule extends Module {
   @override
   List<Bind> get binds => [
-        Bind.singleton((i) => TokenService()),
-        Bind.singleton((i) => AuthController(tokenService: i())),
+        Bind.singleton((i) => AppHttpClient()),
+        Bind.factory((i) => AuthRepository(httpClient: i(),),),
+        Bind.singleton((i) => AuthController(authRepository: i(),)),
         Bind.lazySingleton((i) => PatientRepository(authController: i())),
         Bind.lazySingleton((i) => AppointmentRepository(authController: i())),
         Bind.lazySingleton((i) => LocationRepository(authController: i())),

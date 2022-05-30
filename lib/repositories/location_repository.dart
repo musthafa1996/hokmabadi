@@ -19,7 +19,7 @@ class LocationRepository {
     final headers = {
       'Content-type': 'application/json',
       'Accept': 'application/json',
-      'Authorization': 'Bearer ${token.accessToken}',
+      'Authorization': 'Bearer $token',
       'Organization-ID': AppConfig.ascendOrganizationId,
     };
     final response = await http.get(url, headers: headers);
