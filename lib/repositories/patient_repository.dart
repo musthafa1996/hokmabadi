@@ -25,21 +25,20 @@ class PatientRepository {
     final filters = <String>[];
 
     if(firstName?.isNotEmpty ?? false) {
-      filters.add("firstName~=$firstName");
+      filters.add("$firstName");
     }
     if(lastName?.isNotEmpty ?? false) {
-      filters.add("lastName~=$lastName");
+      filters.add(" $lastName");
     }
 
-    final filtersString = filters.join(",");
+    final filtersString = filters.join("");
 
-    final url = Uri.parse("$kAscendApiEndpoint/ascend-gateway/api/v1/patients")
-        .replace(queryParameters: {"filter": filtersString});
+    final url = Uri.parse("$kStagingUrl/admin/patients")
+        .replace(queryParameters: {"name": filtersString});
     final headers = {
       'Content-type': 'application/json',
       'Accept': 'application/json',
       'Authorization': 'Bearer $token',
-      'Organization-ID': AppConfig.ascendOrganizationId,
     };
     final response = await http.get(url, headers: headers);
 

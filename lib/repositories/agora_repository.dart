@@ -15,7 +15,7 @@ class AgoraRepository {
     required String appointmentId,
     required String channel,
     required String location,
-    required String patientId,
+    required int patientId,
     required String patientName,
     required String providerId,
     required String? note,

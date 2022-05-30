@@ -37,7 +37,7 @@ class Patient {
     this.lastModified,
   });
 
-  final String id;
+  final int id;
   final String? title;
   final String firstName;
   final String? middleInitial;
