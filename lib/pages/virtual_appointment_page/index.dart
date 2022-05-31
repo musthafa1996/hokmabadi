@@ -330,7 +330,6 @@ class _VirtualAppointmentPageState extends State<VirtualAppointmentPage> {
         patientName: "${patient.firstName} ${patient.lastName}",
         providerId: appointment.provider.id,
         note: appointment.note,
-        start: appointment.start,
       );
     } catch (error) {
       throw "Something went wong while joinin the appointment.";

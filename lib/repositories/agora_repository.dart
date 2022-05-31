@@ -1,10 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:hokmabadi/config/constants.dart';
+import '../../config/constants.dart';
 import 'package:http/http.dart' as http;
-import 'package:hokmabadi/controllers/auth_controller.dart';
-import 'package:hokmabadi/models/agora_token.dart';
+import '../../controllers/auth_controller.dart';
+import '../../models/agora_token.dart';
 
 class AgoraRepository {
   AgoraRepository({required this.authController});
@@ -19,7 +18,6 @@ class AgoraRepository {
     required String patientName,
     required String providerId,
     required String? note,
-    required DateTime start,
   }) async {
 
     final token = authController.token;
@@ -33,15 +31,15 @@ class AgoraRepository {
 
 
     final body = <String, dynamic>{
-      "appointment_id": "1",
-      "channel_name": "Appointment for 1",
-      "location": "THDC Office 2",
-      "name": "John Doe",
-      "patient_id": "360480",
+      "uid": "0",
+      "channel_name": channel,
       "role": 'host',
-      "uid": "510",
+      "appointment_id": appointmentId,
+      "patient_id": patientId,
+      "name": patientName,
+      "note": note,
+      "location": location,
     };
-
 
     if (note?.isNotEmpty ?? false) {
       note = note!.replaceAll(RegExp(r"[\n]+"), "");
@@ -50,7 +48,7 @@ class AgoraRepository {
     }
 
     final response =
-        await http.post(Uri.parse("$kStagingUrl/agora/token"), body: jsonEncode(body) , headers: headers);
+        await http.post(Uri.parse("$kStagingUrl/admin/virtual-call/token"), body: jsonEncode(body) , headers: headers);
 
 
     debugPrint(response.body);
