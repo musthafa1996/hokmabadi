@@ -23,7 +23,7 @@ class AuthController extends ChangeNotifier {
   String? _token;
   bool _isLoggedIn = false;
 
-  bool get isLoggedIn => _token != null;
+  bool get isLoggedIn => _isLoggedIn;
 
   String get token {
     if (!isLoggedIn) throw AuthException("Unauthenticated.");
@@ -52,6 +52,7 @@ class AuthController extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
     _isLoggedIn = false;
+    _token = null;
   }
 }
 
