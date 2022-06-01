@@ -15,7 +15,7 @@ class LocationRepository {
     final token = authController.token;
 
     final url =
-        Uri.parse("$kStagingUrl/admin/locations");
+        Uri.parse("$kBaseUrl/admin/locations");
     final headers = {
       'Content-type': 'application/json',
       'Accept': 'application/json',

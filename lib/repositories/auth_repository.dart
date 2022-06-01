@@ -23,7 +23,7 @@ class AuthRepository {
     };
 
 
-    final url = Uri.parse("$kStagingUrl/admin/login");
+    final url = Uri.parse("$kBaseUrl/admin/login");
 
     final response = await httpClient.post(url, body: jsonEncode(body), headers: headers);
     final Map<String, dynamic> json = jsonDecode(response.body);

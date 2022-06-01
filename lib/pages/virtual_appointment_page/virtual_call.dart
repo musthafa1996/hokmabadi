@@ -10,7 +10,7 @@ import 'package:hokmabadi/config/app_config.dart';
 import 'package:hokmabadi/models/virtual_appointment_params.dart';
 import 'package:pusher_client/pusher_client.dart';
 
-const kPusherAppId = "59bc997d5081a55f5264";
+const kPusherAppId = "6a62ad667f59b53db930";
 const kPusherCluster = "mt1";
 const kPusherChannelName = "thdc-virtuals";
 const kPusherEventName = "patient-kicked";

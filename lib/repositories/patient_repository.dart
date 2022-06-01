@@ -33,7 +33,7 @@ class PatientRepository {
 
     final filtersString = filters.join("");
 
-    final url = Uri.parse("$kStagingUrl/admin/patients")
+    final url = Uri.parse("$kBaseUrl/admin/patients")
         .replace(queryParameters: {"name": filtersString});
     final headers = {
       'Content-type': 'application/json',

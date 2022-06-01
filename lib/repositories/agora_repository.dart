@@ -48,7 +48,7 @@ class AgoraRepository {
     }
 
     final response =
-        await http.post(Uri.parse("$kStagingUrl/admin/virtual-call/token"), body: jsonEncode(body) , headers: headers);
+        await http.post(Uri.parse("$kBaseUrl/admin/virtual-call/token"), body: jsonEncode(body) , headers: headers);
 
 
     debugPrint(response.body);

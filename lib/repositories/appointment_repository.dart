@@ -15,7 +15,7 @@ class AppointmentRepository {
     final token = await authController.token;
     final now = DateTime.now();
 
-    final url = Uri.parse("$kStagingUrl/admin/patients/$patientId/appointments")
+    final url = Uri.parse("$kBaseUrl/admin/patients/$patientId/appointments")
             .replace(
         queryParameters: {"moment": "upcoming"});
 
